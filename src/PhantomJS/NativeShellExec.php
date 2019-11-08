@@ -106,7 +106,7 @@ class NativeShellExec implements IPhantomJS {
 
 		$command = array_merge(
 			$command,
-			[ $this->captureFile, $baseUrl.$url, $cookies, $cookieDomain, $cookiePath ]
+			[ $this->captureFile, $baseUrl . $url, $cookies, $cookieDomain, $cookiePath ]
 		);
 
 		return $command;

@@ -27,10 +27,10 @@ class PhantomJSFactory {
 	 */
 	public function getPhantomJS() {
 		if ( array_key_exists( $this->phantomJSBackend, $this->phantomJSBackendRegistry ) ) {
-		    $phantomJSBackend = call_user_func( $this->phantomJSBackendRegistry[ $this->phantomJSBackend ] );
-		    if ( $phantomJSBackend instanceof IPhantomJS ) {
-		        return $phantomJSBackend;
-            }
+			$phantomJSBackend = call_user_func( $this->phantomJSBackendRegistry[ $this->phantomJSBackend ] );
+			if ( $phantomJSBackend instanceof IPhantomJS ) {
+				return $phantomJSBackend;
+			}
 		}
 
 		throw new MWException(

@@ -3,10 +3,10 @@ namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
 class RemoteWebService implements IPhantomJS {
 
-    /**
-     * PhantomJS backend endpoint
-     * @var string
-     */
+	/**
+	 * PhantomJS backend endpoint
+	 * @var string
+	 */
 	private $phantomJSServiceURL;
 
 	/**

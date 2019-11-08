@@ -29,15 +29,4 @@
 namespace BlueSpice\ArticlePreviewCapture;
 
 class Extension extends \BlueSpice\Extension {
-
-	public static function onRegistration() {
-		$GLOBALS['wgForeignFileRepos'][] = [
-			'class' => 'FileRepo',
-			'name' => 'ArticlePreviewCapture',
-			'directory' => BS_DATA_DIR . '/ArticlePreviewCapture/',
-			'hashLevels' => 0,
-			'url' => BS_DATA_PATH . '/ArticlePreviewCapture',
-			'scriptDirUrl' => $GLOBALS['wgScriptPath']
-		];
-	}
 }
