@@ -3,10 +3,10 @@ namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
 class NativeShellExec implements IPhantomJS {
 
-    /**
-     * phantomjs local path
-     * @var string
-     */
+	/**
+	 * phantomjs local path
+	 * @var string
+	 */
 	private $phantomJSExe;
 	private $phantomJSOptions;
 	private $captureFile;
@@ -106,7 +106,7 @@ class NativeShellExec implements IPhantomJS {
 
 		$command = array_merge(
 			$command,
-			[ $this->captureFile, $baseUrl.$url, $cookies, $cookieDomain, $cookiePath ]
+			[ $this->captureFile, $baseUrl . $url, $cookies, $cookieDomain, $cookiePath ]
 		);
 
 		return $command;

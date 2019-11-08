@@ -37,7 +37,6 @@
 			}
 		}
 	},
-	"callback": "\\BlueSpice\\ArticlePreviewCapture\\Extension::onRegistration",
 	"MessagesDirs": {
 		"BlueSpiceArticlePreviewCapture": [
 			"i18n"
@@ -73,6 +72,9 @@
 		"ArticlePreviewCapturePhantomJSBackend": {
 			"value": "mediawiki-shell-command"
 		}
+	},
+	"Hooks": {
+		"SetupAfterCache": "\\BlueSpice\\ArticlePreviewCapture\\Hook\\SetupAfterCache\\AddForeignFileRepo::callback"
 	},
 	"AutoloadNamespaces": {
 		"BlueSpice\\ArticlePreviewCapture\\": "src/"
