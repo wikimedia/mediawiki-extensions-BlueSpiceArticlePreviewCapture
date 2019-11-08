@@ -1,0 +1,46 @@
+{
+	"name": "bluespice/articlepreviewcapture",
+	"description": "Creates preview images of wikipages for dynamic file dispatcher",
+	"keywords": [
+		"mediawiki",
+		"wiki"
+	],
+	"license": "GPL-3.0-only",
+	"type": "mediawiki-extension",
+	"homepage": "https://www.bluespice.com",
+	"authors": [
+		{
+			"name": "Hallo Welt! GmbH",
+			"email": "info@hallowelt.com",
+			"homepage": "http://www.hallowelt.com"
+		}
+	],
+	"extra": {
+		"installer-name": "BlueSpiceArticlePreviewCapture"
+	},
+	"require": {
+		"composer/installers": "~1.0"
+	},
+	"require-dev": {
+		"jakub-onderka/php-parallel-lint": "1.0.0",
+		"jakub-onderka/php-console-highlighter": "0.3.2",
+		"mediawiki/mediawiki-codesniffer": "19.0.0",
+		"mediawiki/minus-x": "0.3.1"
+	},
+	"scripts": {
+		"test": [
+			"parallel-lint . --exclude vendor --exclude node_modules",
+			"minus-x check .",
+			"phpcs -sp"
+		],
+		"fix": [
+			"minus-x fix .",
+			"phpcbf"
+		]
+	},
+	"autoload" : {
+		"psr-4": {
+			"BlueSpice\\ArticlePreviewCapture\\" : "src"
+		}
+	}
+}
