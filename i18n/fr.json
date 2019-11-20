@@ -1,8 +1,9 @@
 {
 	"@metadata": {
 		"authors": [
-			"Gomoko"
+			"Gomoko",
+			"Thibaut120094"
 		]
 	},
-	"bs-articlepreviewcapture-desc": "Crée les images d’aperçu e pages wiki pour le répartiteur de fichier dynamique"
+	"bs-articlepreviewcapture-desc": "Crée les images d’aperçu de pages wiki pour le répartiteur de fichier dynamique"
 }
