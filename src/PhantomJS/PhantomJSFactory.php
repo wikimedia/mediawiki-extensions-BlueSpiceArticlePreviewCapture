@@ -2,8 +2,8 @@
 
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
-use MWException;
 use BlueSpice\ExtensionAttributeBasedRegistry;
+use MWException;
 
 class PhantomJSFactory {
 

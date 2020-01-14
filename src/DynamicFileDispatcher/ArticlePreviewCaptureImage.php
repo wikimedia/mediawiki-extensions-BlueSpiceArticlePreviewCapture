@@ -2,9 +2,9 @@
 
 namespace BlueSpice\ArticlePreviewCapture\DynamicFileDispatcher;
 
-use BlueSpice\Services;
-use BlueSpice\DynamicFileDispatcher\Params;
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
+use BlueSpice\DynamicFileDispatcher\Params;
+use BlueSpice\Services;
 
 class ArticlePreviewCaptureImage extends ArticlePreviewImage {
 	const SCREENSHOT = 'screenshot';
