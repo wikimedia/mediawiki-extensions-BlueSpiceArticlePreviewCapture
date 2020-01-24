@@ -70,7 +70,7 @@
 			"value": null
 		},
 		"ArticlePreviewCapturePhantomJSBackend": {
-			"value": "mediawiki-shell-command"
+			"value": "native-shell-exec"
 		}
 	},
 	"Hooks": {
