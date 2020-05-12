@@ -59,11 +59,11 @@
 			"value": [  "--ignore-ssl-errors", "true" ]
 		},
 		"ArticlePreviewCapturePhantomJSBaseUrl": {
-			"@note": "Defaults to $wgServer",
+			"description": "Defaults to $wgServer",
 			"value": null
 		},
 		"ArticlePreviewCapturePhantomJSEscapeShellCommand": {
-			"@note": "If you need to add command line variable before command set this to false",
+			"description": "If you need to add command line variable before command set this to false",
 			"value": true
 		},
 		"ArticlePreviewCapturePhantomJSServiceURL": {
