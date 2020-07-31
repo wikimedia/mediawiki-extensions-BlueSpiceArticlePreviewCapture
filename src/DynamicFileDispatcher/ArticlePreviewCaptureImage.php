@@ -51,6 +51,16 @@ class ArticlePreviewCaptureImage extends ArticlePreviewImage {
 			false
 		);
 		parent::extractParams( $params );
+
+		$this->titleText = $this->params[static::TITLETEXT];
+	}
+
+	/**
+	 *
+	 * @return bool
+	 */
+	protected function isTitleRequired() {
+		return true;
 	}
 
 }
