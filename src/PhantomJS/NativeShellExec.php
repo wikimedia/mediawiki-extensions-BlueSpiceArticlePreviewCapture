@@ -1,6 +1,8 @@
 <?php
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
+use MediaWiki\MediaWikiServices;
+
 class NativeShellExec implements IPhantomJS {
 
 	/**
@@ -18,19 +20,19 @@ class NativeShellExec implements IPhantomJS {
 	 * @throws \ConfigException
 	 */
 	public static function factory() {
-		$phantomJSExe = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$phantomJSExe = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ArticlePreviewCapturePhantomJSExecutable' );
 
-		$phantomJSOptions = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$phantomJSOptions = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ArticlePreviewCapturePhantomJSOptions' );
 
 		$captureFile = $GLOBALS[ 'wgExtensionDirectory' ]
 			. "/BlueSpiceArticlePreviewCapture/webservices/render.js";
 
-		$escapeShellCommand = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$escapeShellCommand = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ArticlePreviewCapturePhantomJSEscapeShellCommand' );
 
-		$scriptPath = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$scriptPath = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ScriptPath' );
 
 		return new static( $phantomJSExe, $phantomJSOptions, $captureFile,

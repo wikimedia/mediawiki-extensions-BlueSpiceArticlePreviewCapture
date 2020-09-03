@@ -3,6 +3,7 @@
 namespace BlueSpice\ArticlePreviewCapture;
 
 use BlueSpice\ArticlePreviewCapture\PhantomJS\IPhantomJS;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\RevisionRecord;
 
 class Generator {
@@ -168,7 +169,7 @@ class Generator {
 		$cookies = base64_encode( \FormatJson::encode( $_COOKIE ) );
 
 		/** @var IPhantomJS $phantomJS */
-		$phantomJS = \BlueSpice\Services::getInstance()
+		$phantomJS = MediaWikiServices::getInstance()
 			->getService( 'BSArticlePreviewCapturePhantomJSFactory' )
 			->getPhantomJS();
 

@@ -4,7 +4,7 @@ namespace BlueSpice\ArticlePreviewCapture\DynamicFileDispatcher;
 
 use BlueSpice\DynamicFileDispatcher\ArticlePreviewImage;
 use BlueSpice\DynamicFileDispatcher\Params;
-use BlueSpice\Services;
+use MediaWiki\MediaWikiServices;
 
 class ArticlePreviewCaptureImage extends ArticlePreviewImage {
 	const SCREENSHOT = 'screenshot';
@@ -28,7 +28,7 @@ class ArticlePreviewCaptureImage extends ArticlePreviewImage {
 	public function getFile() {
 		$revision = null;
 		if ( $this->params[static::REVISION] > 0 ) {
-			$store = Services::getInstance()->getRevisionStore();
+			$store = MediaWikiServices::getInstance()->getRevisionStore();
 			$revision = $store->getRevisionById(
 				$this->params[static::REVISION]
 			);
