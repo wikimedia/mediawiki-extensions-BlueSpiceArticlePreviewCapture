@@ -1,6 +1,8 @@
 <?php
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
+use MediaWiki\MediaWikiServices;
+
 class RemoteWebService implements IPhantomJS {
 
 	/**
@@ -14,7 +16,7 @@ class RemoteWebService implements IPhantomJS {
 	 * @throws \ConfigException
 	 */
 	public static function factory() {
-		$phantomJSServiceURL = \BlueSpice\Services::getInstance()->getConfigFactory()
+		$phantomJSServiceURL = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ArticlePreviewCapturePhantomJSServiceURL' );
 
 		return new self( $phantomJSServiceURL );
