@@ -85,7 +85,7 @@ class Generator {
 	 *
 	 * @param \File &$file
 	 * @param RevisionRecord $revision
-	 * @return bool | \File
+	 * @return bool|\File
 	 * @throws \ConfigException
 	 * @throws \MWException
 	 */

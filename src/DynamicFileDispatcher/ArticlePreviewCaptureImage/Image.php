@@ -8,6 +8,7 @@ use MediaWiki\Storage\RevisionRecord;
 
 class Image extends \BlueSpice\DynamicFileDispatcher\ArticlePreviewImage\Image {
 
+	/** @var bool */
 	protected $screenshot = false;
 
 	/**
@@ -25,7 +26,7 @@ class Image extends \BlueSpice\DynamicFileDispatcher\ArticlePreviewImage\Image {
 
 	/**
 	 *
-	 * @return string | bool
+	 * @return string|bool
 	 * @throws \MWException
 	 */
 	protected function getSourcePath() {

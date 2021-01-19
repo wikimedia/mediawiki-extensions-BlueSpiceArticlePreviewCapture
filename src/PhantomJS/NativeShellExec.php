@@ -10,9 +10,13 @@ class NativeShellExec implements IPhantomJS {
 	 * @var string
 	 */
 	private $phantomJSExe;
+	/** @var string */
 	private $phantomJSOptions;
+	/** @var string */
 	private $captureFile;
+	/** @var string */
 	private $escapeShellCommand;
+	/** @var string */
 	private $scriptPath;
 
 	/**

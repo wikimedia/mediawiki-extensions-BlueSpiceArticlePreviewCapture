@@ -7,7 +7,9 @@ use MWException;
 
 class PhantomJSFactory {
 
+	/** @var ExtensionAttributeBasedRegistry */
 	private $phantomJSBackendRegistry;
+	/** @var string */
 	private $phantomJSBackend;
 
 	/**
