@@ -56,7 +56,7 @@
 			"value": "/usr/local/bin/phantomjs"
 		},
 		"ArticlePreviewCapturePhantomJSOptions": {
-			"value": [  "--ignore-ssl-errors", "true" ]
+			"value": [ "--ignore-ssl-errors", "true" ]
 		},
 		"ArticlePreviewCapturePhantomJSBaseUrl": {
 			"description": "Defaults to $wgServer",
@@ -79,6 +79,6 @@
 	"AutoloadNamespaces": {
 		"BlueSpice\\ArticlePreviewCapture\\": "src/"
 	},
-	"load_composer_autoloader" : true,
+	"load_composer_autoloader": true,
 	"manifest_version": 2
 }
