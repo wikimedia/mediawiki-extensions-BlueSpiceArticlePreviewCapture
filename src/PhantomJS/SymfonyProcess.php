@@ -18,7 +18,7 @@ class SymfonyProcess extends NativeShellExec {
 		$process = $builder->getProcess();
 
 		$output = '';
-		$process->run( function ( $type, $capturedOutput ) use ( &$output ) {
+		$process->run( static function ( $type, $capturedOutput ) use ( &$output ) {
 			$output .= $capturedOutput;
 		} );
 

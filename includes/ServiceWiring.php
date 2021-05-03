@@ -4,7 +4,7 @@ use BlueSpice\ExtensionAttributeBasedRegistry;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'BSArticlePreviewCapturePhantomJSFactory' => function ( MediaWikiServices $services ) {
+	'BSArticlePreviewCapturePhantomJSFactory' => static function ( MediaWikiServices $services ) {
 		$registry = new ExtensionAttributeBasedRegistry(
 			'BlueSpiceFoundationPhantomJSBackendRegistry'
 		);
