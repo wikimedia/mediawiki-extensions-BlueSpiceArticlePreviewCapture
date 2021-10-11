@@ -7,7 +7,7 @@ use BlueSpice\DynamicFileDispatcher\Params;
 use MediaWiki\MediaWikiServices;
 
 class ArticlePreviewCaptureImage extends ArticlePreviewImage {
-	const SCREENSHOT = 'screenshot';
+	public const SCREENSHOT = 'screenshot';
 
 	/**
 	 *
