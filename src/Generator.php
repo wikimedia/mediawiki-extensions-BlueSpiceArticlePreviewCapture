@@ -7,10 +7,10 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\RevisionRecord;
 
 class Generator {
-	const FILE_PREFIX = 'revision_';
-	const PARAM_OVERWRITE = 'overwrite';
-	const PARAM_HEIGHT = 'height';
-	const PARAM_WIDTH = 'width';
+	public const FILE_PREFIX = 'revision_';
+	public const PARAM_OVERWRITE = 'overwrite';
+	public const PARAM_HEIGHT = 'height';
+	public const PARAM_WIDTH = 'width';
 
 	/**
 	 *
