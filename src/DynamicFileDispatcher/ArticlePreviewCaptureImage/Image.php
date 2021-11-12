@@ -39,6 +39,7 @@ class Image extends \BlueSpice\DynamicFileDispatcher\ArticlePreviewImage\Image {
 			$this->revision,
 			$this->dfd->getParams()
 		);
+
 		if ( !$thumb instanceof \MediaTransformOutput
 			|| $thumb->isError()
 			|| empty( $thumb->getLocalCopyPath() ) ) {
