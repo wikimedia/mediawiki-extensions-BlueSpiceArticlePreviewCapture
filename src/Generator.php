@@ -3,6 +3,8 @@
 namespace BlueSpice\ArticlePreviewCapture;
 
 use BlueSpice\ArticlePreviewCapture\PhantomJS\IPhantomJS;
+use File;
+use MediaWiki\MediaWikiServices;
 use MediaWiki\Storage\RevisionRecord;
 
 class Generator {
@@ -54,6 +56,7 @@ class Generator {
 
 		if ( !$file->exists() || isset( $params[ static::PARAM_OVERWRITE ] ) ) {
 			$file = $this->createCapture( $file, $revision );
+			$this->waitForFileExists( $file );
 		}
 
 		if ( empty( $params[ static::PARAM_WIDTH ] ) ) {
@@ -70,7 +73,7 @@ class Generator {
 	/**
 	 * Gets file from revision
 	 * @param RevisionRecord $revision
-	 * @return bool|\File
+	 * @return bool|File
 	 */
 	public function getFileFromRevision( RevisionRecord $revision ) {
 		return \BsFileSystemHelper::getFileFromRepoName(
@@ -82,13 +85,13 @@ class Generator {
 	/**
 	 * Captures a screenshot of a given revision from a page.
 	 *
-	 * @param \File &$file
+	 * @param File &$file
 	 * @param RevisionRecord $revision
-	 * @return bool | \File
+	 * @return bool|File
 	 * @throws \ConfigException
 	 * @throws \MWException
 	 */
-	protected function createCapture( \File &$file, RevisionRecord $revision ) {
+	protected function createCapture( File &$file, RevisionRecord $revision ) {
 		$captureFile = $GLOBALS[ 'wgExtensionDirectory' ]
 			. "/BlueSpiceArticlePreviewCapture/webservices/render.js";
 
@@ -123,16 +126,7 @@ class Generator {
 			return $this->execute( $revision, $captureFile, $fileName );
 		}
 
-		$count = 0;
 		$file = null;
-
-		while ( !\BsFileSystemHelper::getFileFromRepoName(
-				$fileName,
-				'ArticlePreviewCapture'
-			)->exists() && $count < 80 ) {
-			usleep( 250000 );
-			$count++;
-		}
 
 		if ( file_exists( $this->lockFile ) ) {
 			unlink( $this->lockFile );
@@ -168,7 +162,7 @@ class Generator {
 		$cookies = base64_encode( \FormatJson::encode( $_COOKIE ) );
 
 		/** @var IPhantomJS $phantomJS */
-		$phantomJS = \BlueSpice\Services::getInstance()
+		$phantomJS = MediaWikiServices::getInstance()
 			->getService( 'BSArticlePreviewCapturePhantomJSFactory' )
 			->getPhantomJS();
 
@@ -187,5 +181,19 @@ class Generator {
 		unlink( $this->lockFile );
 
 		return $status->getValue();
+	}
+
+	/**
+	 * @param File $file
+	 */
+	private function waitForFileExists( $file ) {
+		if ( !$file instanceof File ) {
+			return;
+		}
+		$count = 0;
+		while ( !$file->exists() && $count < 80 ) {
+			usleep( 250000 );
+			$count++;
+		}
 	}
 }
