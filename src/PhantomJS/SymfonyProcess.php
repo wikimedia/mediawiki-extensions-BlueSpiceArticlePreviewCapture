@@ -1,7 +1,7 @@
 <?php
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
-use Symfony\Component\Process\ProcessBuilder;
+use Symfony\Component\Process\Process;
 
 class SymfonyProcess extends NativeShellExec {
 
@@ -14,8 +14,7 @@ class SymfonyProcess extends NativeShellExec {
 	public function getScreenshotByUrl( $url, $baseUrl, $cookies ) {
 		$command = $this->getCommandArguments( $url, $baseUrl, $cookies );
 
-		$builder = new ProcessBuilder( $command );
-		$process = $builder->getProcess();
+		$process = new Process( $command );
 
 		$output = '';
 		$process->run( static function ( $type, $capturedOutput ) use ( &$output ) {
