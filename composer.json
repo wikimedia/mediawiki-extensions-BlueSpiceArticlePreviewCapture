@@ -19,6 +19,7 @@
 		"installer-name": "BlueSpiceArticlePreviewCapture"
 	},
 	"require": {
+		"symfony/process": "~5",
 		"composer/installers": "~1.0"
 	},
 	"require-dev": {
