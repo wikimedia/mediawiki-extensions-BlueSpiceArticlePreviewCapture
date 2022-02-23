@@ -159,7 +159,10 @@ class Generator {
 			$baseUrl = $this->config->get( 'Server' );
 		}
 
-		$cookies = base64_encode( \FormatJson::encode( $_COOKIE ) );
+		$cookieFilter = new CookieFilter( $this->config->get( 'CookiePrefix' ) );
+		$filteredCookies = $cookieFilter->filter( $_COOKIE );
+
+		$cookies = base64_encode( \FormatJson::encode( $filteredCookies ) );
 
 		/** @var IPhantomJS $phantomJS */
 		$phantomJS = MediaWikiServices::getInstance()
