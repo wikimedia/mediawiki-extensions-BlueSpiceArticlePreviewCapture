@@ -1,4 +1,5 @@
 {
+	"name": "BlueSpiceArticlePreviewCapture",
 	"private": true,
 	"scripts": {
 		"test": "grunt test"
