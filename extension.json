@@ -74,7 +74,16 @@
 		}
 	},
 	"Hooks": {
-		"SetupAfterCache": "\\BlueSpice\\ArticlePreviewCapture\\Hook\\SetupAfterCache\\AddForeignFileRepo::callback"
+		"SetupAfterCache": "\\BlueSpice\\ArticlePreviewCapture\\Hook\\SetupAfterCache\\AddForeignFileRepo::callback",
+		"MWStakeCommonWebAPIsQueryStoreResult": "addUserImage"
+	},
+	"HookHandlers": {
+		"addUserImage": {
+			"class": "\\BlueSpice\\ArticlePreviewCapture\\Hook\\AddUserImageToUserStore",
+			"services": [
+				"UserFactory", "BSRendererFactory"
+			]
+		}
 	},
 	"AutoloadNamespaces": {
 		"BlueSpice\\ArticlePreviewCapture\\": "src/"
