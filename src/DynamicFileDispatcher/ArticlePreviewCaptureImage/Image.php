@@ -4,7 +4,7 @@ namespace BlueSpice\ArticlePreviewCapture\DynamicFileDispatcher\ArticlePreviewCa
 
 use BlueSpice\ArticlePreviewCapture\Generator;
 use BlueSpice\DynamicFileDispatcher\Module;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 
 class Image extends \BlueSpice\DynamicFileDispatcher\ArticlePreviewImage\Image {
 
