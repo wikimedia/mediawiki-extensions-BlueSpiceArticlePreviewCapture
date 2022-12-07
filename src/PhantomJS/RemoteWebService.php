@@ -43,6 +43,7 @@ class RemoteWebService implements IPhantomJS {
 	 * @return bool|string
 	 */
 	public function getScreenshotByUrl( $url, $baseUrl, $cookies ) {
+		$this->logger->debug( "Creating preview image for $url" );
 		$es = htmlspecialchars_decode( $url );
 		$queryParams = [
 			'url' => $baseUrl . $es,
@@ -51,9 +52,11 @@ class RemoteWebService implements IPhantomJS {
 
 		$requestUrl = $this->phantomJSServiceURL . '/?' . http_build_query( $queryParams );
 
+		$this->logger->debug( "Calling '$requestUrl'" );
 		$fileData = $this->httpRequestFactory->get(
 			$requestUrl, [ 'sslVerifyHost' => false, 'sslVerifyCert' => false ]
 		);
+		$this->logger->debug( "Response: '$fileData'" );
 
 		return $fileData ?? false;
 	}
