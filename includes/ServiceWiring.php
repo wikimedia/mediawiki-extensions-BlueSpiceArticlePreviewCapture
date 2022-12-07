@@ -1,6 +1,7 @@
 <?php
 
 use BlueSpice\ExtensionAttributeBasedRegistry;
+use MediaWiki\Logger\LoggerFactory;
 use MediaWiki\MediaWikiServices;
 
 return [
@@ -12,9 +13,11 @@ return [
 		$backend = $services->getConfigFactory()->makeConfig( 'bsg' )
 			->get( 'ArticlePreviewCapturePhantomJSBackend' );
 
+		$logger = LoggerFactory::getInstance( 'ArticlePreviewCapture' );
 		return new BlueSpice\ArticlePreviewCapture\PhantomJS\PhantomJSFactory(
 			$registry,
-			$backend
+			$backend,
+			$logger
 		);
 	},
 ];
