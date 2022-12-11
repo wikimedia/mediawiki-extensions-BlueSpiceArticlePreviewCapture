@@ -1,6 +1,7 @@
 <?php
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
+use MediaWiki\Http\HttpRequestFactory;
 use MediaWiki\MediaWikiServices;
 
 class RemoteWebService implements IPhantomJS {
@@ -11,6 +12,9 @@ class RemoteWebService implements IPhantomJS {
 	 */
 	private $phantomJSServiceURL;
 
+	/** @var HttpRequestFactory */
+	private $httpRequestFactory;
+
 	/**
 	 * @return RemoteWebService
 	 * @throws \ConfigException
@@ -19,15 +23,17 @@ class RemoteWebService implements IPhantomJS {
 		$phantomJSServiceURL = MediaWikiServices::getInstance()->getConfigFactory()
 			->makeConfig( 'bsg' )->get( 'ArticlePreviewCapturePhantomJSServiceURL' );
 
-		return new self( $phantomJSServiceURL );
+		return new self( $phantomJSServiceURL, MediaWikiServices::getInstance()->getHttpRequestFactory() );
 	}
 
 	/**
 	 * RemoteWebService constructor.
 	 * @param string $phantomJSServiceURL
+	 * @param HttpRequestFactory $httpRequestFactory
 	 */
-	public function __construct( $phantomJSServiceURL ) {
+	public function __construct( $phantomJSServiceURL, HttpRequestFactory $httpRequestFactory ) {
 		$this->phantomJSServiceURL = $phantomJSServiceURL;
+		$this->httpRequestFactory = $httpRequestFactory;
 	}
 
 	/**
@@ -45,8 +51,10 @@ class RemoteWebService implements IPhantomJS {
 
 		$requestUrl = $this->phantomJSServiceURL . '/?' . http_build_query( $queryParams );
 
-		$fileData = \Http::get( $requestUrl, [ 'sslVerifyHost' => false, 'sslVerifyCert' => false ] );
+		$fileData = $this->httpRequestFactory->get(
+			$requestUrl, [ 'sslVerifyHost' => false, 'sslVerifyCert' => false ]
+		);
 
-		return $fileData;
+		return $fileData ?? false;
 	}
 }
