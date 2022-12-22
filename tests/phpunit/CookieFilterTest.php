@@ -5,6 +5,9 @@ namespace BlueSpice\ArticlePreviewCapture\Tests;
 use BlueSpice\ArticlePreviewCapture\CookieFilter;
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @group BlueSpiceArticlePreviewCapture
+ */
 class CookieFilterTest extends TestCase {
 
 	/**
