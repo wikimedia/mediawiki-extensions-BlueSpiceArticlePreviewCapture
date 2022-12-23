@@ -5,7 +5,7 @@ namespace BlueSpice\ArticlePreviewCapture;
 use BlueSpice\ArticlePreviewCapture\PhantomJS\IPhantomJS;
 use File;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Storage\RevisionRecord;
+use MediaWiki\Revision\RevisionRecord;
 
 class Generator {
 	public const FILE_PREFIX = 'revision_';
