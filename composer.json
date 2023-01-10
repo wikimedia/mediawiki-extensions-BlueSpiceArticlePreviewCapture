@@ -44,5 +44,10 @@
 		"psr-4": {
 			"BlueSpice\\ArticlePreviewCapture\\": "src"
 		}
+	},
+	"config": {
+		"allow-plugins": {
+			"composer/installers": true
+		}
 	}
 }
