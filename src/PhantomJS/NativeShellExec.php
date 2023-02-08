@@ -2,8 +2,11 @@
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
 use MediaWiki\MediaWikiServices;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
+use Psr\Log\NullLogger;
 
-class NativeShellExec implements IPhantomJS {
+class NativeShellExec implements IPhantomJS, LoggerAwareInterface {
 
 	/**
 	 * phantomjs local path
@@ -18,6 +21,8 @@ class NativeShellExec implements IPhantomJS {
 	private $escapeShellCommand;
 	/** @var string */
 	private $scriptPath;
+	/** @var LoggerInterface */
+	private $logger;
 
 	/**
 	 * @return NativeShellExec
@@ -58,6 +63,15 @@ class NativeShellExec implements IPhantomJS {
 		$this->captureFile = $captureFile;
 		$this->escapeShellCommand = $escapeShellCommand;
 		$this->scriptPath = $scriptPath;
+		$this->logger = new NullLogger();
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 * @return void
+	 */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
 	}
 
 	/**
@@ -67,6 +81,7 @@ class NativeShellExec implements IPhantomJS {
 	 * @return bool|string
 	 */
 	public function getScreenshotByUrl( $url, $baseUrl, $cookies ) {
+		$this->logger->debug( "Creating preview image for $url" );
 		$command = $this->getCommandArguments( $url, $baseUrl, $cookies );
 		$escapedCommand = [];
 		$i = 0;
@@ -80,6 +95,7 @@ class NativeShellExec implements IPhantomJS {
 		}
 		$out = [];
 		$cmd = implode( ' ',  $escapedCommand );
+		$this->logger->debug( "Running command '$cmd'" );
 
 		// wfShellExec will fail due to memory limits
 		if ( wfIsWindows() ) {
@@ -89,6 +105,7 @@ class NativeShellExec implements IPhantomJS {
 			$base64Data = exec( $cmd );
 		}
 
+		$this->logger->debug( "Response: '$base64Data'" );
 		return base64_decode( $base64Data );
 	}
 
