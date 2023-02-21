@@ -2,14 +2,18 @@
 namespace BlueSpice\ArticlePreviewCapture\PhantomJS;
 
 use MediaWiki\MediaWikiServices;
+use Psr\Log\LoggerAwareInterface;
+use Psr\Log\LoggerInterface;
 
-class RemoteWebService implements IPhantomJS {
+class RemoteWebService implements IPhantomJS, LoggerAwareInterface {
 
 	/**
 	 * PhantomJS backend endpoint
 	 * @var string
 	 */
 	private $phantomJSServiceURL;
+	/** @var LoggerInterface */
+	private $logger;
 
 	/**
 	 * @return RemoteWebService
@@ -28,6 +32,14 @@ class RemoteWebService implements IPhantomJS {
 	 */
 	public function __construct( $phantomJSServiceURL ) {
 		$this->phantomJSServiceURL = $phantomJSServiceURL;
+	}
+
+	/**
+	 * @param LoggerInterface $logger
+	 * @return void
+	 */
+	public function setLogger( LoggerInterface $logger ) {
+		$this->logger = $logger;
 	}
 
 	/**
