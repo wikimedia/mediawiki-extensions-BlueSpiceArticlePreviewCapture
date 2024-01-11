@@ -22,7 +22,7 @@ class NativeShellExec implements IPhantomJS, LoggerAwareInterface {
 	/** @var string */
 	private $scriptPath;
 	/** @var LoggerInterface */
-	private $logger;
+	protected $logger;
 
 	/**
 	 * @return NativeShellExec
