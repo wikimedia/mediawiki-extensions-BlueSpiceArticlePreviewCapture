@@ -29,4 +29,20 @@
 namespace BlueSpice\ArticlePreviewCapture;
 
 class Extension extends \BlueSpice\Extension {
+
+	/**
+	 * @return void
+	 */
+	public static function callback() {
+		// Register APC file repo
+		$GLOBALS['wgForeignFileRepos'][] = [
+			'class' => 'FileRepo',
+			'backend' => 'FileRepo',
+			'name' => 'ArticlePreviewCapture',
+			'directory' => BS_DATA_DIR . '/ArticlePreviewCapture/',
+			'hashLevels' => 0,
+			'url' => BS_DATA_PATH . '/ArticlePreviewCapture',
+			'scriptDirUrl' => $GLOBALS['wgScriptPath'],
+		];
+	}
 }
