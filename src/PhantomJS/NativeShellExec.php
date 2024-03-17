@@ -94,7 +94,7 @@ class NativeShellExec implements IPhantomJS, LoggerAwareInterface {
 			$escapedCommand[] = escapeshellarg( $commandPart );
 		}
 		$out = [];
-		$cmd = implode( ' ',  $escapedCommand );
+		$cmd = implode( ' ', $escapedCommand );
 		$this->logger->debug( "Running command '$cmd'" );
 
 		// wfShellExec will fail due to memory limits
