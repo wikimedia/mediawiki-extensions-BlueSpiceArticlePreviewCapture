@@ -116,7 +116,8 @@ class NativeShellExec implements IPhantomJS, LoggerAwareInterface {
 	 * @return array
 	 */
 	protected function getCommandArguments( $url, $baseUrl, $cookies ) {
-		$parsedBaseUrl = wfParseUrl( $baseUrl );
+		$urlUtils = MediaWikiServices::getInstance()->getUrlUtils();
+		$parsedBaseUrl = $urlUtils->parse( $baseUrl );
 
 		$cookieDomain = $parsedBaseUrl[ 'host' ];
 		$cookiePath = $this->scriptPath;
