@@ -36,7 +36,7 @@ class Extension extends \BlueSpice\Extension {
 	public static function callback() {
 		// Register APC file repo
 		$GLOBALS['wgForeignFileRepos'][] = [
-			'class' => 'FileRepo',
+			'class' => \FileRepo::class,
 			'backend' => 'FileRepo',
 			'name' => 'ArticlePreviewCapture',
 			'directory' => BS_DATA_DIR . '/ArticlePreviewCapture/',
