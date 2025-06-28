@@ -89,7 +89,7 @@
 		"BlueSpice\\ArticlePreviewCapture\\": "src/"
 	},
 	"TestAutoloadNamespaces": {
-		"BlueSpice\\ArticlePreviewCapture\\Test\\": "tests/phpunit"
+		"BlueSpice\\ArticlePreviewCapture\\Test\\": "tests/phpunit/"
 	},
 	"load_composer_autoloader": true,
 	"manifest_version": 2
